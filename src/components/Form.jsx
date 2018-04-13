@@ -20,6 +20,8 @@ class Form extends Component {
         // Prevent auto reload
         e.preventDefault();
 
+        // const location = this.state.input;
+        // this.props.onSubmit(location);
         // Reset input field
         this.setState({
             input: ""
