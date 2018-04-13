@@ -1,7 +1,7 @@
 import { Map } from "immutable";
 
 const initial = Map({
-    weather: "hi",
+    weather: Map({}),
 });
 
 export default initial;
