@@ -1,5 +1,4 @@
 import React from "react";
-
 import TodayDetail from "./TodayDetail";
 
 const TodaySection = () => (
