@@ -1,6 +1,6 @@
-export const setWeather = weather => {
+export const setLocation = location => {
     return {
-        type: "setWeather",
-        weather: weather,
+        type: "setLocation",
+        location: location,
     };
 };
