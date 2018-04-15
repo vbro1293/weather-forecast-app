@@ -15,7 +15,6 @@ const TodaySection = ({ weather }) => {
    
     return (
         <section>
-            {console.log(weatherToday)}
             <header>
                 <h1>{ weatherToday.title }</h1>
                 <h3>{moment(weatherToday.time).format('llll') }</h3>

@@ -1,42 +1,49 @@
 import React, { Component } from "react";
-import { Chart } from "highcharts";
+import Highcharts from "highcharts";
+import { withHighcharts, HighchartsChart, Chart, Title, Legend, XAxis, YAxis, ColumnSeries } from "react-jsx-highcharts";
+import moment from "moment-timezone";
 
 class WeekSection extends Component {
-
-    // componentDidMount(){
-    //     // Extend Highcharts with modules
-    //     if (this.props.modules) {
-    //         this.props.modules.forEach(function (module) {
-    //             module(Highcharts);
-    //         });
-    //     }
-    //     // Set container which the chart should render to.
-    //     this.chart = new Highcharts[this.props.type || "Chart"](
-    //         this.props.container,
-    //         this.props.options
-    //     );
-    // };
-
-    // //Destroy chart before unmount.
-    // componentWillUnmount() {
-    //     this.chart.destroy();
-    // };
-
-
     render(){
-        const options = {
+        //Copy of state, convert immutable to JS object
+        const weatherToday = this.props.weather.slice().toJS();
+        const data = weatherToday["consolidated_weather"];
+        const minTempData = data.reduce((acc, val) => {
+            acc.push(val["min_temp"]);
+            return acc;
+        }, []);
+        const maxTempData = data.reduce((acc, val) => {
+            acc.push(val["max_temp"]);
+            return acc;
+        }, []);
+        const avgTempData = data.reduce((acc, val) => {
+            acc.push(val["the_temp"]);
+            return acc;
+        }, []);
+        
+        const datesXData = data.reduce((acc, val) => {
+            acc.push(moment(val["applicable_date"]).format("MMM Do"));
+            return acc;
+        }, []);
+        //set local timezone, to show correct time
+        moment.tz.setDefault(weatherToday.timezone);
 
-        }
         return(
-            <section className="weekSection">
-                {/* <h2></h2> */}
-                <div id="container" className="chartContainer" >
-                    <ColumnSeries container="chart" options ={ options } modules= "Column"/>
-                </div>
-            </section>
-    
+            <HighchartsChart>
+                {console.log(data)}
+                <Chart />
+                <Title>{ this.props.children }</Title>
+                <Legend layout="vertical" align="right" verticalAlign="middle" />
+                <XAxis categories={ datesXData } />
+                <YAxis id="temp">
+                    <YAxis.Title>Temperature (degrees C)</YAxis.Title>
+                    <ColumnSeries id="min_temp" name="Min" data={minTempData} />
+                    <ColumnSeries id="max_temp" name="Max" data={maxTempData} />
+                    <ColumnSeries id="avg_temp" name="Avg" data={avgTempData} />
+                </YAxis>
+            </HighchartsChart>
         )
     }
 }
             
-export default WeekSection;
+export default withHighcharts(WeekSection, Highcharts);
