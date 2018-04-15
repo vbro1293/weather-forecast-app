@@ -4,22 +4,16 @@ import moment from "moment";
 
 const TodaySection = ({ weather }) => {
     const weatherToday = weather.slice().toJS();
+    const temp = weatherToday["consolidated_weather"]["5"]["the_temp"];
     return (
         <section>
-        { true  ?
-            <section>
-                {console.log(weatherToday)}
-                <h3>{weatherToday.title}</h3>
-                <TodayDetail  >Current Temp</TodayDetail>
-                <TodayDetail>Current Weather</TodayDetail>
-                <TodayDetail value={ moment(weatherToday.sun_set).fromNow() }>Sundown</TodayDetail>
-                {/* sun set - timeNow (dependent on timezone)*/}
-            </section>
-        :
-        <p>no</p>
-        }
+            {console.log(temp)}
+            <h3>{weatherToday.title}</h3>
+            <TodayDetail value={ temp } >Current Temp</TodayDetail>
+            <TodayDetail>Current Weather</TodayDetail>
+            <TodayDetail value={ moment(weatherToday.sun_set).fromNow() }>Sundown</TodayDetail>
+            {/* sun set - timeNow (dependent on timezone)*/}
         </section>
-
     )
 };
 
