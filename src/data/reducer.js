@@ -1,6 +1,6 @@
 import moment from "moment-timezone";
 
-//Function returns object which gets set to today property in state
+//==========Function returns object which gets set to today property in state
 const newToday = ({ weather }) => {
     //Convert immutable to JS object
     const weatherToday = weather.slice().toJS();
@@ -15,7 +15,6 @@ const newToday = ({ weather }) => {
     const curWeather = weatherToday["consolidated_weather"]["0"]["weather_state_name"];
     const sundown = moment(weatherToday.sun_set).fromNow();
     
-    
     return ({
         location,
         time,
@@ -25,7 +24,7 @@ const newToday = ({ weather }) => {
     })
 }
 
-//Function returns object which gets set to week property in state
+//============Function returns object which gets set to week property in state
 const newWeek= ({ weather }) => {
     //Convert immutable to JS object
     const weatherToday = weather.toJS();
@@ -59,14 +58,17 @@ const newWeek= ({ weather }) => {
     })
 }
 
-//Set states called when action is called
+//==========Set states called when action is called
 const setWeek = (state, { weather }) => state.set("week", newWeek({ weather }));
 const setToday = (state, { weather }) => state.set("today", newToday({ weather }));
 
+//==========Reducer - switches action type and calls state updating function
 const reducer = (state, action) => {
     switch(action.type){
-        //Update today and week values in state, when api recieves data
-        case "setWeather": return setWeek(setToday(state, action), action);
+        //Update today and week values in state, when api recieves data, reset state "error" to false (error handle - previous invalid location))
+        case "setWeather": return setWeek(setToday(state.set("error", false), action), action);
+        //Set error to true (location is invalid)
+        case "error": return state.set("error", true);
         default: return state;
     }
 };

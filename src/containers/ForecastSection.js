@@ -3,6 +3,7 @@ import ForecastSection from "../components/ForecastSection";
 
 const mapStateToProps = (state, action) => {
     return ({
+        error: state.get("error"),
         todayData: state.get("today"),
         weekData: state.get("week"),
     })
