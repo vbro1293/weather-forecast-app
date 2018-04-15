@@ -13,8 +13,8 @@ const WeekSection = ({ children, weekData }) => {
             <YAxis id="temp">
                 <YAxis.Title>Temperature (degreesC)</YAxis.Title>
                 <ColumnSeries id="min_temp" name="Min" data={ minTempData } />
-                <ColumnSeries id="max_temp" name="Max" data={ maxTempData } />
                 <ColumnSeries id="avg_temp" name="Avg" data={ avgTempData } />
+                <ColumnSeries id="max_temp" name="Max" data={ maxTempData } />
             </YAxis>
         </HighchartsChart>
     )

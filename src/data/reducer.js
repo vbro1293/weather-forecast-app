@@ -1,7 +1,33 @@
 import moment from "moment-timezone";
 
+//Function returns object which gets set to today property in state
+const newToday = ({ weather }) => {
+    //Convert immutable to JS object
+    const weatherToday = weather.slice().toJS();
+    
+    //set local timezone, to show correct time
+    moment.tz.setDefault(weatherToday.timezone);
+    
+    //Set consts of values req'd
+    const location = weatherToday.title;
+    const time = moment(weatherToday.time).format('llll');
+    const curTemp = weatherToday["consolidated_weather"]["0"]["the_temp"];
+    const curWeather = weatherToday["consolidated_weather"]["0"]["weather_state_name"];
+    const sundown = moment(weatherToday.sun_set).fromNow();
+    
+    
+    return ({
+        location,
+        time,
+        curTemp,
+        curWeather,
+        sundown,
+    })
+}
+
+//Function returns object which gets set to week property in state
 const newWeek= ({ weather }) => {
-    //Copy of state, convert immutable to JS object
+    //Convert immutable to JS object
     const weatherToday = weather.toJS();
     const data = weatherToday["consolidated_weather"];
     
@@ -26,36 +52,20 @@ const newWeek= ({ weather }) => {
     }, []);
 
     return ({
-        minTempData: minTempData,
-        maxTempData: maxTempData,
-        avgTempData: avgTempData,
-        datesXData: datesXData,
+        minTempData,
+        maxTempData,
+        avgTempData,
+        datesXData,
     })
 }
-const newToday = ({ weather }) => {//Copy of state, convert immutable to JS object
-    const weatherToday = weather.slice().toJS();
-    //Set consts of values req'd
-    const location = weatherToday.title;
-    const time = moment(weatherToday.time).format('llll');
-    const curTemp = weatherToday["consolidated_weather"]["0"]["the_temp"];
-    const curWeather = weatherToday["consolidated_weather"]["0"]["weather_state_name"];
-    const sundown = moment(weatherToday.sun_set).fromNow();
-    //set local timezone, to show correct time
-    moment.tz.setDefault(weatherToday.timezone);
-    return ({
-        location: location,
-        time: time,
-        curTemp: curTemp,
-        curWeather,
-        sundown: sundown,
 
-    })
-}
+//Set states called when action is called
 const setWeek = (state, { weather }) => state.set("week", newWeek({ weather }));
 const setToday = (state, { weather }) => state.set("today", newToday({ weather }));
 
 const reducer = (state, action) => {
     switch(action.type){
+        //Update today and week values in state, when api recieves data
         case "setWeather": return setWeek(setToday(state, action), action);
         default: return state;
     }
