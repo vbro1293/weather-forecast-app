@@ -29,9 +29,11 @@ class Form extends Component {
     }
 
     change(e){
+        // Trim whitespace, remove any non alpha characters
+        const curInput = e.target.value.trim().replace(/[^a-zA-Z]/, "");
         // Update local state with current input value
         this.setState({ 
-            input: e.target.value
+            input: curInput,
         })
     }
 
