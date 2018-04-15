@@ -5,8 +5,8 @@ import moment from "moment-timezone";
 
 const TodaySection = ({ weather }) => {
     const weatherToday = weather.slice().toJS();
-    const curTemp = weatherToday["consolidated_weather"]["5"]["the_temp"];
-    const curWeather = weatherToday["consolidated_weather"]["5"]["weather_state_name"];
+    const curTemp = weatherToday["consolidated_weather"]["0"]["the_temp"];
+    const curWeather = weatherToday["consolidated_weather"]["0"]["weather_state_name"];
     const sundown = moment(weatherToday.sun_set).fromNow();
     moment.tz.setDefault(weatherToday.timezone);
     return (
