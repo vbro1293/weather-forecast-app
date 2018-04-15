@@ -7,12 +7,11 @@ const ForecastSection = ({ weather }) => (
         { weather.size>0 ?
             <section>
                 <TodaySection weather={ weather } />
-                <WeekSection>Six Day Forecast</WeekSection>
+                <WeekSection weather={ weather }>Six Day Forecast</WeekSection>
             </section>
         :
-
-        <p>Please enter a location</p>
-    }
+            <p>Please enter a location</p>
+        }
     </section>
 );
 
