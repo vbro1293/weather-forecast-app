@@ -38,7 +38,7 @@ class Form extends Component {
     render(){
         return(
             <form onSubmit={ this.submit }>
-                <Input value={ this.state.value } onChange={ this.change }/>
+                <Input value={ this.state.input } onChange={ this.change }/>
                 <Button>Submit</Button>
             </form>
         )

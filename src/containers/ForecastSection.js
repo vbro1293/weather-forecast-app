@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import TodaySection from "../components/TodaySection";
+import ForecastSection from "../components/ForecastSection";
 
 const mapStateToProps = (state, action) => {
     return {
@@ -7,4 +7,4 @@ const mapStateToProps = (state, action) => {
     }
 };
 
-export default connect(mapStateToProps)(TodaySection);
+export default connect(mapStateToProps)(ForecastSection);
