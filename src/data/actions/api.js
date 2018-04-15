@@ -1,6 +1,6 @@
 import axios from "../../axios";
 import { fromJS } from "immutable";
-import { setWeather } from "./state";
+import { setWeather, error } from "./state";
 
 //get location data from api, promise -> get weather using id, promise -> dispatch action to set weather object to store
 export const getLocation = ( location ) => dispatch => {
@@ -10,5 +10,7 @@ export const getLocation = ( location ) => dispatch => {
             const weatherOb = fromJS(response.data);
             dispatch(setWeather(weatherOb));
         })
-    })
+    }).catch(() => {
+        dispatch(error());
+    });
 }

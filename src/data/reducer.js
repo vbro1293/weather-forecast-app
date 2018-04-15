@@ -67,6 +67,7 @@ const reducer = (state, action) => {
     switch(action.type){
         //Update today and week values in state, when api recieves data
         case "setWeather": return setWeek(setToday(state, action), action);
+        case "error": return state;
         default: return state;
     }
 };

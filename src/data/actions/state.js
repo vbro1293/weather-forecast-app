@@ -4,3 +4,9 @@ export const setWeather = weather => {
         weather,
     };
 };
+
+export const error = () => {
+    return {
+        type: "error",
+    };
+};
