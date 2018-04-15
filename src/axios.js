@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-	baseURL: "",
+	baseURL: "http://interview.toumetisanalytics.com/",
 	headers: {
 		Accept: "application/json",
 	}
