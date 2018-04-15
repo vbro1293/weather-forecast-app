@@ -2,12 +2,13 @@ import React from "react";
 import TodaySection from "./TodaySection";
 import WeekSection from "./WeekSection";
 
-const ForecastSection = ({ weather }) => (
+const ForecastSection = ({ todayData, weekData }) => (
     <section>
-        { weather.size>0 ?
+        {/* No data- weekData returns Map with size 0, otherwise will return object literal */}
+        { weekData.size !== 0 ?
             <section>
-                <TodaySection weather={ weather } />
-                <WeekSection weather={ weather }>Six Day Forecast</WeekSection>
+                <TodaySection todayData={ todayData } />
+                <WeekSection weekData={ weekData }>Six Day Forecast</WeekSection>
             </section>
         :
             <p>Please enter a location</p>
