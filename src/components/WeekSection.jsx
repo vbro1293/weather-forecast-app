@@ -11,7 +11,7 @@ const WeekSection = ({ children, weekData }) => {
             <Legend layout="vertical" align="right" verticalAlign="middle" />
             <XAxis categories={ datesXData } />
             <YAxis id="temp">
-                <YAxis.Title>Temperature (degreesC)</YAxis.Title>
+                <YAxis.Title>Temperature (°C)</YAxis.Title>
                 <ColumnSeries id="min_temp" name="Min" data={ minTempData } />
                 <ColumnSeries id="avg_temp" name="Avg" data={ avgTempData } />
                 <ColumnSeries id="max_temp" name="Max" data={ maxTempData } />
