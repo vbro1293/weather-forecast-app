@@ -1,3 +1,4 @@
+//Set up of initial store
 import { Map } from "immutable";
 
 const initial = Map({

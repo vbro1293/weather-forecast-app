@@ -3,7 +3,6 @@ import TodayDetail from "./TodayDetail";
 
 const TodaySection = ({ todayData }) => {
     const { curTemp, curWeather, sundown } = todayData;
-   
     return (
         <section className="todaySection">
             <TodayDetail value={ curTemp } >Current Temp</TodayDetail>
