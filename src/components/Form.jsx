@@ -41,7 +41,7 @@ class Form extends Component {
         return(
             <form onSubmit={ this.submit }>
                 <Input value={ this.state.input } onChange={ this.change }/>
-                <Button>Submit</Button>
+                <Button isDisabled={ !this.state.input }>SUBMIT</Button>
             </form>
         )
     }

@@ -9,9 +9,11 @@ import ForecastSection from "./containers/ForecastSection";
 class App extends Component {
   render() {
     return (
-      <div>
-        <Header>Weather Forecast</Header>
-        <Form />
+      <div className="app">
+        <section className="heading">
+          <Header>Weather Dashboard</Header>
+          <Form />
+        </section>
         <ForecastSection />
       </div>
     );
