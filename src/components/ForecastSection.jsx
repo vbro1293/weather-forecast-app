@@ -12,7 +12,7 @@ const ForecastSection = ({ todayData, weekData, error }) => (
                 <WeekSection weekData={ weekData }>Six Day Forecast</WeekSection>
             </section>
             : 
-            <p>Please enter a location</p>) 
+            <p>Please enter a city to find out it's forecast</p>) 
         :
         <p>Please try a different city</p>
     }
