@@ -14,48 +14,116 @@ body {
   background-attachment: fixed; }
 
 .app {
-  margin: auto;
-  padding: 3vw 5vw; }
+  padding: 3vw 5vw;
+  margin: auto; }
 
 h1 {
-  padding: 5vw 0 5vw 0;
-  margin: 0px;
-  color: #e8b201;
   font-size: 1.6em;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #e8b201;
+  padding: 5vw 2vw;
+  margin: 0; }
+  h1.mainTitle {
+    border-bottom: 1px solid white; }
+
+h2, h3 {
+  margin: 1vw; }
+
+h2, h4 {
+  font-weight: lighter; }
+
+h2 {
+  font-size: 1.5em;
+  color: black; }
+
+h3 {
+  font-size: 1.2em; }
+
+h4 {
+  margin: 2px;
+  font-size: 1.1em; }
+
+p {
+  font-size: 1.3em;
+  color: black; }
 
 .heading {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 5%;
-  padding-bottom: 5%; }
+  border-radius: 10px;
+  padding-bottom: 5%;
+  margin: 5% 0; }
 
 input, button {
   display: block;
   color: white;
+  padding: 8px 10px;
   border-style: none;
   border-radius: 3px;
   background: none;
-  padding: 8px 10px;
   transition: all 0.2s ease-in-out; }
   input:focus, button:focus {
     outline: none;
     background: rgba(0, 0, 0, 0.2); }
 
 input {
-  margin: 3% auto;
-  width: 50%;
-  border: 1px solid #e8b201;
   font-size: 1.3em;
-  text-align: center; }
+  text-align: center;
+  width: 50%;
+  margin: 3% auto;
+  border: 1px solid #e8b201;
+  background: rgba(255, 255, 255, 0.1); }
   input:focus {
     width: 70%; }
   input::placeholder {
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.4); }
 
 button {
   font-size: 0.8em;
-  border: 1px solid white;
-  margin: auto; }
+  margin: auto;
+  border: 1px solid white; }
   button:disabled {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     color: rgba(0, 0, 0, 0.2); }
+
+.cityInfo {
+  border-bottom: 1px solid white; }
+  .cityInfo h1 {
+    padding: 2vw 1vw 1vw; }
+
+.todayDetail, .forecastSection {
+  border-radius: 5px;
+  padding: 2vw; }
+
+.todayDetail {
+  border: 1px solid #e8b201;
+  margin: 2vw 2vw; }
+
+.forecastSection {
+  background: rgba(0, 0, 0, 0.4);
+  padding-bottom: 5%; }
+
+svg {
+  margin-top: 2vw; }
+
+.chart rect.highcharts-background {
+  fill: none; }
+
+.chart tspan {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 1.5em;
+  fill: black;
+  font-weight: lighter; }
+
+.chart .highcharts-xaxis-labels text tspan, .chart .highcharts-yaxis-labels text {
+  font-family: 'Raleway', sans-serif !important;
+  fill: white !important;
+  font-weight: bold; }
+
+.chart .highcharts-xaxis-labels text tspan {
+  font-size: 0.8em !important; }
+
+.chart .highcharts-yaxis-labels text {
+  font-size: 1em !important; }
+
+.chart .highcharts-legend-item tspan {
+  font-size: 1.3em; }
