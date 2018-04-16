@@ -1,0 +1,33 @@
+//==================================
+// GENERAL
+//==================================
+body {
+    font-size: 19px;
+}
+
+h1 {
+    padding: 3vw;
+}
+
+//==================================
+// FORM
+//==================================
+input {
+    width: 40%;
+    &:focus {
+        width: 50%;
+    }
+}
+
+//==================================
+//  FORECAST SECTION
+//==================================
+.todaySection {
+    margin: 2vw;
+}
+
+.chart {
+    .highcharts-xaxis-labels text tspan, .highcharts-yaxis-labels text {
+        font-size: 1.2em !important;
+    }
+}
