@@ -11,7 +11,7 @@ const newToday = ({ weather }) => {
     //Set consts of values req'd
     const location = weatherToday.title;
     const time = moment(weatherToday.time).format('llll');
-    const curTemp = weatherToday["consolidated_weather"]["0"]["the_temp"];
+    const curTemp = Math.round(weatherToday["consolidated_weather"]["0"]["the_temp"] * 10) / 10 + "°C";
     const curWeather = weatherToday["consolidated_weather"]["0"]["weather_state_name"];
     const sundown = moment(weatherToday.sun_set).fromNow();
     

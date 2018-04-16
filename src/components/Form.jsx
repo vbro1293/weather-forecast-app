@@ -10,7 +10,6 @@ class Form extends Component {
         this.state = {
             input: "",
         }
-
         /* Bind methods to this */
         this.submit = this.submit.bind(this);
         this.change = this.change.bind(this);
@@ -19,8 +18,9 @@ class Form extends Component {
     submit(e){
         // Prevent auto reload
         e.preventDefault();
-
-        const location = this.state.input;
+        //Remove multiple spaces and any whitespace at start and end 
+        const location = this.state.input.replace(/ +/g, " ").trim();
+        //Action onSubmit passed down as props from form container - passes location into action
         this.props.onSubmit(location);
         // Reset input field
         this.setState({
@@ -29,8 +29,8 @@ class Form extends Component {
     }
 
     change(e){
-        // Trim whitespace, remove any non alpha characters
-        const curInput = e.target.value.trim().replace(/[^a-zA-Z]/, "");
+        // Remove any non alpha characters
+        let curInput = e.target.value.replace(/[^a-zA-Z ]/, "");
         // Update local state with current input value
         this.setState({ 
             input: curInput,
@@ -41,7 +41,7 @@ class Form extends Component {
         return(
             <form onSubmit={ this.submit }>
                 <Input value={ this.state.input } onChange={ this.change }/>
-                <Button>Submit</Button>
+                <Button isDisabled={ !this.state.input.trim() }>SUBMIT</Button>
             </form>
         )
     }

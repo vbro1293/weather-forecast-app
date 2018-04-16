@@ -1,9 +1,7 @@
 import React from "react";
 
 const Header = ({ children }) => (
-    <div>
-        <h1>{ children }</h1>
-    </div>
+    <h1 className="mainTitle">{ children }</h1>
 );
 
 export default Header;

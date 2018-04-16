@@ -1,0 +1,47 @@
+//==================================
+// GENERAL
+//==================================
+body {
+    font-size: 20px;
+}
+
+h1 {
+    padding: 2vw;
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+.heading {
+    padding-bottom: 2%;
+}
+
+//==================================
+// FORM
+//==================================
+input {
+    margin: 2% auto;
+    width: 30%;
+    &:focus {
+        width: 40%;
+    }
+}
+
+//==================================
+//  FORECAST SECTION
+//==================================
+.todayDetail {
+    padding: 1vw;
+    margin: 1vw 1vw;
+}
+
+.todaySection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1vw;
+}
+
+.forecastSection {
+    padding: 5px;
+}
