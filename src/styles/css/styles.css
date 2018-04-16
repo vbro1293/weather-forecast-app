@@ -98,12 +98,12 @@ button {
   border: 1px solid #e8b201;
   margin: 2vw 2vw; }
 
+.todaySection {
+  margin: 3vw; }
+
 .forecastSection {
   background: rgba(0, 0, 0, 0.4);
   padding-bottom: 5%; }
-
-svg {
-  margin-top: 2vw; }
 
 .chart rect.highcharts-background {
   fill: none; }
@@ -127,3 +127,41 @@ svg {
 
 .chart .highcharts-legend-item tspan {
   font-size: 1.3em; }
+
+@media only screen and (min-width: 481px) {
+  body {
+    font-size: 19px; }
+  h1 {
+    padding: 3vw; }
+  input {
+    width: 40%; }
+    input:focus {
+      width: 50%; }
+  .todaySection {
+    margin: 2vw; }
+  .chart .highcharts-xaxis-labels text tspan, .chart .highcharts-yaxis-labels text {
+    font-size: 1.2em !important; } }
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 20px; }
+  h1 {
+    padding: 2vw; }
+  h2 {
+    font-size: 1.2em; }
+  .heading {
+    padding-bottom: 2%; }
+  input {
+    margin: 2% auto;
+    width: 30%; }
+    input:focus {
+      width: 40%; }
+  .todayDetail {
+    padding: 1vw;
+    margin: 1vw 3vw; }
+  .todaySection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1vw; }
+  .forecastSection {
+    padding: 5px; } }

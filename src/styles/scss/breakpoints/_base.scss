@@ -91,7 +91,7 @@ input {
     width: 50%;
     margin: 3% auto;
     border: 1px solid $color6;
-    background: $color10;
+    background: $color1;
     &:focus {
         width: 70%;
     }
@@ -130,13 +130,13 @@ button {
     margin: 2vw 2vw;
 }
 
+.todaySection {
+    margin: 3vw;
+}
+
 .forecastSection {
     background: $color4;
     padding-bottom: 5%;
-}
-
-svg {
-    margin-top: 2vw;
 }
 
 .chart {
