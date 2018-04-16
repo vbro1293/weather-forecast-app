@@ -148,7 +148,7 @@ button {
   h1 {
     padding: 2vw; }
   h2 {
-    font-size: 1.2em; }
+    font-size: 1.1em; }
   .heading {
     padding-bottom: 2%; }
   input {
@@ -158,7 +158,7 @@ button {
       width: 40%; }
   .todayDetail {
     padding: 1vw;
-    margin: 1vw 3vw; }
+    margin: 1vw 1vw; }
   .todaySection {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
