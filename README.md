@@ -160,6 +160,8 @@ Performance/Speed testing would also be considered with extension of the app, es
 
  - Using the data from the API - I ended up with some averages which were higher than the max temperature. So I am unsure if I was using the incorrect average temperature.
 
+ - I added the same promise to both API requests, however the error would be different and the second would be a server-side error, as if it has successfully retrieved the location, then any error of the second request cannot be of fault of the client as the woeid id is used directly to make the second request. This could be handled better with more time and much more important if it went into production.
+
  - I started by storing the whole weather object in global state, and carrying out the logic to get the required data in the components. I then moved that into reducer and only stored relevant data. This was probably not the preferred way to do it, as it wasted time refactoring it. I initially did this as I was unsure of the best way to do it and wanted to be able to make progress in rendering the data, but by following best practice to seperate the logic and components I refactored it.
 
  - Overall, I think that I achieved a MVP that matches the brief. This was good practice to increase my knowledge and understanding of APIs and implementing axios into React Redux, so next time I would hopefully be able to achieve this in a more efficient manner.
