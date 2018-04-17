@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Input from "./Input";
 import Button from "./Button";
+import CompleteList from "./CompleteList";
 
 class Form extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Form extends Component {
 
         this.state = {
             input: "",
+            list: [],
         }
         /* Bind methods to this */
         this.submit = this.submit.bind(this);
@@ -31,6 +33,11 @@ class Form extends Component {
     change(e){
         // Remove any non alpha characters
         let curInput = e.target.value.replace(/[^a-zA-Z ]/, "");
+
+        const { locations } = this.props;
+        const options = locations.filter(location => location.includes(curInput));
+        console.log(options);
+
         // Update local state with current input value
         this.setState({ 
             input: curInput,
@@ -41,6 +48,7 @@ class Form extends Component {
         return(
             <form onSubmit={ this.submit }>
                 <Input value={ this.state.input } onChange={ this.change }/>
+                <CompleteList list={ this.state.list }/>
                 <Button isDisabled={ !this.state.input.trim() }>SUBMIT</Button>
             </form>
         )

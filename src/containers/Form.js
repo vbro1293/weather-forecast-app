@@ -2,6 +2,12 @@ import { connect } from "react-redux";
 import Form from "../components/Form";
 import { getLocation } from "../data/actions/api"
 
+const mapStateToProps = (state, action) => {
+    return ({
+        locations: state.get("locations")
+    })
+};
+
 //Wraps form component - onsubmit is passed down as a prop, location passed into api function get weather
 const mapDispatchToProps = dispatch => {
     return {
@@ -9,4 +15,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
