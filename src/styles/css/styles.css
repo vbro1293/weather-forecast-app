@@ -60,7 +60,7 @@ input, button {
   border-style: none;
   border-radius: 3px;
   background: none;
-  transition: all 0.2s ease-in-out; }
+  transition: all 0.1s ease-in-out; }
   input:focus, button:focus {
     outline: none;
     background: rgba(0, 0, 0, 0.2); }
@@ -84,6 +84,27 @@ button {
   button:disabled {
     background: rgba(0, 0, 0, 0.4);
     color: rgba(0, 0, 0, 0.2); }
+  button:hover, button:focus {
+    transition: all 0.1s ease-in-out;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer; }
+
+ul {
+  padding: 0;
+  margin: 2% 0; }
+  ul li {
+    font-size: 1.2em;
+    padding: 3% 0;
+    list-style: none;
+    width: 50%;
+    margin: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+    ul li:last-of-type {
+      border-bottom: none; }
+    ul li:hover, ul li:focus {
+      transition: all 0.1s ease-in-out;
+      color: rgba(0, 0, 0, 0.4);
+      cursor: pointer; }
 
 .cityInfo {
   border-bottom: 1px solid white; }
@@ -137,6 +158,10 @@ button {
     width: 40%; }
     input:focus {
       width: 50%; }
+  ul li {
+    font-size: 1.2em;
+    padding: 1% 0;
+    width: 40%; }
   .todaySection {
     margin: 2vw; }
   .chart .highcharts-xaxis-labels text tspan, .chart .highcharts-yaxis-labels text {
@@ -152,10 +177,16 @@ button {
   .heading {
     padding-bottom: 2%; }
   input {
-    margin: 2% auto;
+    margin: 1% auto;
     width: 30%; }
     input:focus {
       width: 40%; }
+  ul {
+    margin: 1% 0; }
+    ul li {
+      font-size: 1.1em;
+      padding: 0.5% 0;
+      width: 25%; }
   .todayDetail {
     padding: 1vw;
     margin: 1vw 1vw; }
