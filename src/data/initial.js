@@ -1,10 +1,54 @@
 //Set up of initial store
-import { Map } from "immutable";
+import { Map, List } from "immutable";
 
 const initial = Map({
     today: Map({}),
     week: Map({}),
     error: false,
+    locations: List([
+        "London",
+        "Birmingham",
+        "Leeds",
+        "Glasgow",
+        "Sheffield",
+        "Bradford",
+        "Edinburgh",
+        "Liverpool",
+        "Manchester",
+        "Bristol",
+        "Wakefield",
+        "Cardiff",
+        "Coventry",
+        "Nottingham",
+        "Leicester",
+        "Sunderland",
+        "Belfast",
+        "Brighton",
+        "Hull",
+        "Plymouth",
+        "Wolverhampton",
+        "Derby",
+        "Swansea",
+        "Southampton",
+        "Salford",
+        "Aberdeen",
+        "Westminster",
+        "Portsmouth",
+        "York",
+        "Peterborough",
+        "Dundee",
+        "Lancaster",
+        "Oxford",
+        "Newport",
+        "Preston",
+        "St Albans",
+        "Norwich",
+        "Chester",
+        "Cambridge",
+        "Salisbury",
+        "Exeter",
+        "Gloucester"
+    ]),
 });
 
 export default initial;

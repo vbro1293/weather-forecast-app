@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { List } from "immutable";
 
 import Input from "./Input";
 import Button from "./Button";
+import AutoCompleteList from "./AutoCompleteList";
 
 class Form extends Component {
     constructor(props) {
@@ -9,10 +11,12 @@ class Form extends Component {
 
         this.state = {
             input: "",
+            list: List([]),
         }
         /* Bind methods to this */
         this.submit = this.submit.bind(this);
         this.change = this.change.bind(this);
+        this.selectedItem = this.selectedItem.bind(this);
     }
 
     submit(e){
@@ -22,6 +26,7 @@ class Form extends Component {
         const location = this.state.input.replace(/ +/g, " ").trim();
         //Action onSubmit passed down as props from form container - passes location into action
         this.props.onSubmit(location);
+
         // Reset input field
         this.setState({
             input: ""
@@ -29,11 +34,28 @@ class Form extends Component {
     }
 
     change(e){
+        //Get list of locations available, passed down from store
+        const { locations } = this.props;
         // Remove any non alpha characters
-        let curInput = e.target.value.replace(/[^a-zA-Z ]/, "");
-        // Update local state with current input value
+        const curInput = e.target.value.replace(/[^a-zA-Z ]/, "");
+        //Remove multiple spaces and any whitespace at start and end 
+        const modCurInput = curInput.replace(/ +/g, " ").trim();
+
+        // If any location matches input value, add to list, otherwise empty List. compare in lowercase as .includes() is case sensitive
+        let list = modCurInput ? locations.filter(location => location.toLowerCase().includes(modCurInput.toLowerCase())) : List([]);
+        
+        // Update local state with current input value, set list of location matches if any
         this.setState({ 
             input: curInput,
+            list: list,
+        })
+    }
+
+    selectedItem(e){
+        //If item clicked, set input to text content of clicked item
+        this.setState({
+            input: e.target.textContent,
+            list: List([])
         })
     }
 
@@ -41,6 +63,11 @@ class Form extends Component {
         return(
             <form onSubmit={ this.submit }>
                 <Input value={ this.state.input } onChange={ this.change }/>
+                { this.state.list.size>0 ?
+                    <AutoCompleteList list={ this.state.list } selected={ this.selectedItem }/>
+                :
+                    null
+                }
                 <Button isDisabled={ !this.state.input.trim() }>SUBMIT</Button>
             </form>
         )

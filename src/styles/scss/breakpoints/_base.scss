@@ -78,7 +78,7 @@ input, button {
     border-style: none;
     border-radius: 3px;
     background: none;
-    transition: all 0.2s ease-in-out;
+    transition: $transitionAll;
     &:focus {
         outline: none;
         background: $color3;
@@ -107,6 +107,32 @@ button {
     &:disabled {
         background: $color4;
         color: $color3;
+    }
+    &:hover, &:focus {
+        transition: $transitionAll;
+        color: $color4;
+        cursor: pointer;
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 2% 0;
+    li {
+        font-size: 1.2em;
+        padding: 3% 0;
+        list-style: none;
+        width: 50%;
+        margin: auto;
+        border-bottom: 1px solid $color3;
+        &:last-of-type {
+            border-bottom: none;
+        }
+        &:hover, &:focus {
+            transition: $transitionAll;
+            color: $color4;
+            cursor: pointer;
+        }
     }
 }
 
