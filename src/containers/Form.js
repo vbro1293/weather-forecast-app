@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Form from "../components/Form";
 import { getLocation } from "../data/actions/api"
 
+//List of cities passed down as props to form
 const mapStateToProps = (state, action) => {
     return ({
         locations: state.get("locations")
