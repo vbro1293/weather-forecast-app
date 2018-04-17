@@ -9,7 +9,9 @@ export const getLocation = ( location ) => dispatch => {
         axios.get("/weather/" + locationID).then(response => {
             const weatherOb = fromJS(response.data);
             dispatch(setWeather(weatherOb));
-        })
+        }).catch(() => {
+            dispatch(error());
+        });
     }).catch(() => {
         dispatch(error());
     });
