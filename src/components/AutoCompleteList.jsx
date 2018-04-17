@@ -1,8 +1,8 @@
 import React from "react";
 
-const AutoCompleteList = ({ list }) => (
+const AutoCompleteList = ({ list, selected }) => (
     <ul>
-        { list.map((item, id) => <li key={ id }>{ item }</li>) }
+        { list.map((item, id) => <li key={ id } onClick={ selected }>{ item }</li>) }
     </ul>
 );
 

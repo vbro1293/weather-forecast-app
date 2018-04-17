@@ -16,17 +16,17 @@ class Form extends Component {
         /* Bind methods to this */
         this.submit = this.submit.bind(this);
         this.change = this.change.bind(this);
+        this.selectedItem = this.selectedItem.bind(this);
     }
 
     submit(e){
         // Prevent auto reload
         e.preventDefault();
-        
         //Remove multiple spaces and any whitespace at start and end 
         const location = this.state.input.replace(/ +/g, " ").trim();
         //Action onSubmit passed down as props from form container - passes location into action
         this.props.onSubmit(location);
-        
+
         // Reset input field
         this.setState({
             input: ""
@@ -42,7 +42,7 @@ class Form extends Component {
         const modCurInput = curInput.replace(/ +/g, " ").trim();
 
         // If any location matches input value, add to list, otherwise empty List
-        let list = (modCurInput) ? locations.filter(location => location.includes(modCurInput)) : List([]);
+        let list = modCurInput ? locations.filter(location => location.includes(modCurInput)) : List([]);
         
         // Update local state with current input value, set list of location matches if any
         this.setState({ 
@@ -51,12 +51,20 @@ class Form extends Component {
         })
     }
 
+    selectedItem(e){
+        //If item clicked, set input to text content of clicked item
+        this.setState({
+            input: e.target.textContent,
+            list: List([])
+        })
+    }
+
     render(){
         return(
             <form onSubmit={ this.submit }>
                 <Input value={ this.state.input } onChange={ this.change }/>
                 { this.state.list.size>0 ?
-                    <AutoCompleteList list={ this.state.list }/>
+                    <AutoCompleteList list={ this.state.list } selected={ this.selectedItem }/>
                 :
                     null
                 }
