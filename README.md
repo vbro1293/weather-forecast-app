@@ -5,7 +5,6 @@ This challenge was set by Toumetis on the 12th April for completion by the 19th 
 A client requires a simple web application that will enable their analysts to understand the weather in a specific location in the world 🌎. 
 Your brief is to create a single page web application that will allow the user to enter a location and view weather details about it. The client would like to see the following details in particular:
 
-
 Current temperature
 Current weather conditions
 Time till next sunset
@@ -37,6 +36,7 @@ yarn start (View on localhost:3000)
 
 # The Project
 Initially being given a clear defined brief and wireframe, I set out the following stages to the project in order to manage the project efficiently.
+
 - Functional specification
 - Technology choice
 - Logic
@@ -45,8 +45,12 @@ Initially being given a clear defined brief and wireframe, I set out the followi
 - MVP
 - Testing
 
+The following was the wireframe provided.
+![picture](./src/media/wireframe.png)
+
+
 ## Functional Specification
-Following the brief, the app has a very clearly defined specification for the MVP
+From the brief and wireframe, the app has a very clearly defined specification for the MVP
 
 1. Show the current temperature
 2. Show the current weather conditions
@@ -84,7 +88,7 @@ This is a very high-level overview of the logic that I thought my MVP should hav
     - immutable (create immutable Map and List)
     - redux (state kept in store, data can be passed as props and dispatches can be passed as props in order to update the state)
     - react-redux (connect react and redux)
-    <!-- - redux-thunk -->
+    - redux-thunk (allows useage of middleware- Redux DevTools for debugging during development)
     - node-sass-chokidar (used react documentation to enable the css preprocessor Sass, run "yarn watch-css")
 
 ## File system planning
@@ -97,6 +101,8 @@ components/ [contains just the ui, minimal logic, no hard data - just passed in 
 containers/ [contains wrapped components, enabling dispatching]
 
 data/ [all the data - actions(api and state), initial, reducer, store]
+
+media/ [image for background]
 
 styles/ [all the styling files]
 
@@ -112,9 +118,38 @@ index.js [contains the wrapped App.js with Provider (connecting components with 
 
 ## MVP
 From experience with my previous similar project, pre-planning and ongoing planning throughout the project was very useful - it limited the decisions that needed to be made whilst creating it.
+I used GoogleDocs to pre-plan the feature branches and how I would go about implementing features.
 
-Work flow/Work Process
-I chose to use Gitflow in order to do my work. Working a master branch, development branch and feature branches. The master was only merged into a limited amout of times. The development was the primary branch of focus as feature branches were created off of it in order to do specific pieces of work. I generally committed multiple times on the branch in order to track of my work with commenting the commits. I then created pull requests for them and merged them back into development. This allowed a controlled and smooth work flow. After a significant number of feature branches, I merged development into master and tagged each version.
+### Work flow/Work Process
+I chose to use Gitflow in order to do my work. Working with a master branch, development branch and feature branches. The master was only merged into a limited amout of times. The development was the primary branch of focus as feature branches were created off of it in order to do specific pieces of work. I generally committed multiple times on the branch in order to track of my work with commenting the commits. I then created pull requests for them and merged them back into development. This allowed a controlled and smooth work flow. After a significant number of feature branches, I merged development into master and tagged each version.
+
+### API
+I used axios as the library to integrate the API. It allows the app to send a GET method to the API using the location inputted by the user, a promise is then added for asynchronous behaviour, so that another GET is dispatched to the API using the woeid id returned from the first fetch. This will then have another promise to return the forecast information object. If either fail to return data an error is dispatched to store.
+
+The API to use was given in the brief - http://interview.toumetisanalytics.com/location/london for fetching location id using the inputted location and http://interview.toumetisanalytics.com/weather/2459115 for fetching the forecast information using the woeid ID.
+
+### Styling - SASS and Mobile First
+I styled this with a mobile-first approach and using Sass as the CSS pre-processor.
+
+I chose Sass as it allows easy implentation of variables, prevents repitition and it is good for organising styling. 
+
+The mobile-first approach was done by creating a base style sheet and then adding additional style sheets for increasing screen-sizes. I have found that this is a good way to ensure an app is responsive.
 
 
-## Testing
+### Testing
+I completed manual testing throughout the project to hopefully minimise obvious functional bugs e.g. space inputting and button disabling, non alpha characters.
+Being just a one page app with basic useage, hopefully useability is not too difficult, but useability testing would be required if the app was to extend to multiple pages with the potential for more forecast data.
+
+If the app was to go into further development, testing for readability and WAVE accessibility would be important, but for the purpose of a technicial challenge I did not carry this through.
+
+I tested this on Chrome and Firefox but further cross-browser testing would be beneficial. I also only tested on mobile using Chrome DevTools, but testing on multiple mobile devices should also be considered.
+
+Performance/Speed testing would also be considered with extension of the app, especially with added features such as maps and autocomplete.
+
+
+# Evaluation
+With more time it would be good to include a map with a pin reference to location, or some kind of weather map. This would have been a good implentation with more time, which would involve adding an extra library with an API to google maps.
+
+Initially I had some difficulty with the API, as I had only used it a few times prior. After reading some more documentation, research and experimenting with it, I managed to get it to work. I was also unsure about carrying out nested API requests- using the data from the first response directly into the second.
+
+I started by storing the whole weather object in global state, and carrying out the logic to get the required data in the components. I then moved that into reducer and only stored relevant data. This was probably not the preferred way to do it, as it wasted time refactoring it. I initially did this as I was unsure of the best way to do it and wanted to be able to make progress in rendering the data, but by following best practice to seperate the logic and components I refactored it.
