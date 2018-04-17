@@ -41,8 +41,8 @@ class Form extends Component {
         //Remove multiple spaces and any whitespace at start and end 
         const modCurInput = curInput.replace(/ +/g, " ").trim();
 
-        // If any location matches input value, add to list, otherwise empty List
-        let list = modCurInput ? locations.filter(location => location.includes(modCurInput)) : List([]);
+        // If any location matches input value, add to list, otherwise empty List. compare in lowercase as .includes() is case sensitive
+        let list = modCurInput ? locations.filter(location => location.toLowerCase().includes(modCurInput.toLowerCase())) : List([]);
         
         // Update local state with current input value, set list of location matches if any
         this.setState({ 
